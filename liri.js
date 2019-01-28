@@ -9,15 +9,23 @@
 
 /* Initiate
 --------------------------------------------- */
+//require .env file
 require("dotenv").config();
 
-// As always, we grab the fs package to handle read/write.
-var fs = require('fs');           
-var keys = require('./keys.js');
-var Spotify = require('node-spotify-api');
-
-// Include the request npm package (https://www.npmjs.com/package/request)
+// Require request (https://www.npmjs.com/package/request)
 var request = require("request");
+
+// Require Moment
+var moment = require("moment");
+
+// As always, we grab the fs package to handle read/write.
+var fs = require('fs');          
+
+// Like key page
+var keys = require('./keys.js');
+
+// initialize Spotify
+var Spotify = require('node-spotify-api');
 
 // Store all of the arguments in a variable
 var nodeArgs = process.argv;
@@ -108,16 +116,30 @@ function concertThis(){
 
    // Then create a request to the movieUrl
    request(concertUrl, function(error, response, body) {
-
-    var concertData =  JSON.parse(body);
-
-    // If the request is successful
+    
+       // If the request is successful
     if (!error && response.statusCode === 200) {
 
-      // Log concert info to console
-     
-  console.log(concertData);
-  console.log("Venue Name:" + concertData.datetime);
+      var concertData =  JSON.parse(body);
+
+      if (concertData.length >0){
+        for (i=0; i <1; i++) {
+
+        //moment.js to format date to mm/dd/yyyy
+        let venueDate = moment(concertData[i].datetime).format("MM/DD/YYYY");
+
+        // Log concert info to console
+        console.log(`
+         ------------------------------------------  
+          Venue Name: ${concertData[i].venue.name}
+          Venue City: ${concertData[i].venue.city}
+          Event Date: ${venueDate}
+         ------------------------------------------
+        `);
+        }
+      }
+
+  
       // Write movie info to log.txt
       // fs.appendFile('log.txt', "test", 'utf8', function (err) {
       //   if (err) {
@@ -130,6 +152,7 @@ function concertThis(){
 
 // Spotify Function (Spotify API)
 function spotifyThis(userInput) {
+
   var spotify = new Spotify(keys.spotify);
 
   spotify.search({ type: 'track', query: userInput }, function(error, data) {
