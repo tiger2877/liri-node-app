@@ -163,8 +163,8 @@ function spotifyThis(userInput) {
         var songData = data.tracks.items[i];
         
         // Log song info to console
-        console.log(
-      `----------------------------------------
+        console.log(`
+       ----------------------------------------
         Song: ${songData.name}
         Artist: ${songData.artists[0].name}  
         Preview URL: ${songData.preview_url}
