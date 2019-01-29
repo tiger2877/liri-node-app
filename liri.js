@@ -1,10 +1,11 @@
 /*-- Liri-Node-App -->
 <!-- ================================================================ -->
-<!-- Make it so liri.js can take in one of the following commands:    -->
-<!-- 1. concert-this <artist/band name here>                          -->
-<!-- 2. spotify-this-song '<song name here>'                          -->
-<!-- 3. movie-this '<movie name here>'                                -->
-<!-- 4. do-what-it-says                                               -->
+<!-- 1. Make it so liri.js can take in one of the following commands: -->
+<!--    a. concert-this <artist/band name here>                       -->
+<!--    b. spotify-this-song '<song name here>'                       -->
+<!--    c. movie-this '<movie name here>'                             -->
+<!--    d. do-what-it-says                                            -->
+<!-- 2 .output the data to a .txt file called log.txt.                -->
 <!-- ================================================================ -->*/
 
 //require .env file
