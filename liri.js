@@ -26,7 +26,7 @@ var keys = require('./keys.js');
 var Spotify = require('node-spotify-api');
 
 // Store all of the arguments in a variable
-var nodeArgs = process.argv;
+var param = process.argv;
 
 // Actions (i.e. "concert-this", "spotify-this-song", "movie-this", "do-what-it-says")
 var action = process.argv[2];
@@ -77,17 +77,23 @@ function setInput() {
   // Here we create a for-loop that starts with **3** so we skip the path, node command, and our commands from the command line
   // We will use this for loop to build an array of numbers.
 
-  for (var i = 3; i < nodeArgs.length; i++) {
-    if (i > 3 && i < nodeArgs.length) {
-      userInput = userInput + "+" + nodeArgs[i];
+  for (var i = 3; i < param.length; i++) {
+    if (i > 3 && i < param.length) {
+      userInput = userInput + "+" + param[i];
     }
     else {
-      userInput += nodeArgs[i];
+      userInput += param[i];
     }
   }
+ 
+/*
+<!-- ================================================================================================= -->
+<!-- we check if the number of elements in the process.argv array is less then or equal to 3           -->
+<!-- if it is only 3 or less, then we know the user has not supplied any parameter on the command line -->                                                -->
+<!-- ================================================================================================= --> */
 
   // Pass default for Bands in Town Artist Events API
-  if (action === "concert-this" && nodeArgs.length <= 3) {
+  if (action === "concert-this" && param.length <= 3) {
     concertUrl = "https://rest.bandsintown.com/artists/ladygaga/events?app_id=codingbootcamp";
   }
   else {
@@ -95,12 +101,12 @@ function setInput() {
   }
 
   // Pass default for Spotify API
-  if (action === "spotify-this-song" && nodeArgs.length <= 3) {
+  if (action === "spotify-this-song" && param.length <= 3) {
     userInput = "The+Sign+Ace+of+Base"
   }
 
   // Pass default for OMDB API
-  if (action === "movie-this" && nodeArgs.length <= 3) {
+  if (action === "movie-this" && param.length <= 3) {
     movieUrl = "http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy"
   } 
   else {
@@ -111,8 +117,11 @@ function setInput() {
 
 // Concert Function (Bands in Town Artist Events API)
 function concertThis(){
-console.log(`Searching for...${userInput}'s next show... `)
   
+console.log(`Searching for...${userInput}'s next show... `)
+
+   //If no song is provided then your program will default to "The Sign" by Ace of Base
+
    // Then create a request to the movieUrl
    request(concertUrl, function(error, response, body) {
     
@@ -165,8 +174,8 @@ function spotifyThis(userInput) {
         var songData = data.tracks.items[i];
         
         // Log song info to console
-        console.log(
-      `----------------------------------------
+        console.log(`
+       ----------------------------------------
         Song: ${songData.name}
         Artist: ${songData.artists[0].name}  
         Preview URL: ${songData.preview_url}
@@ -187,7 +196,7 @@ function spotifyThis(userInput) {
 
 // Movie Function (OMDB API)
 function movieThis(){
-  
+ 
   // Then create a request to the movieUrl
   request(movieUrl, function(error, response, body) {
     var movieData =  JSON.parse(body);
@@ -195,7 +204,8 @@ function movieThis(){
     // If the request is successful
     if (!error && response.statusCode === 200) {
 
-    // Log movie info to console
+      // Log movie info to console
+     
   console.log(
  `-------------------------------------------------------------------------  
   * Title: ${movieData.Title}
