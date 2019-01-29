@@ -15,7 +15,7 @@ require("dotenv").config();
 // Require request (https://www.npmjs.com/package/request)
 var request = require("request");
 
-// Require Moment
+// Require Moment (https://www.npmjs.com/package/moment)
 var moment = require("moment");
 
 // As always, we grab the fs package to handle read/write.
@@ -93,7 +93,7 @@ function setInput() {
     concertUrl = "https://rest.bandsintown.com/artists/ladygaga/events?app_id=codingbootcamp";
   }
   else {
-    concertUrl = "https://rest.bandsintown.com/artists/" + userInput + "?app_id=codingbootcamp";
+    concertUrl = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=codingbootcamp";
   }
 
   // Pass default for Spotify API
@@ -113,13 +113,14 @@ function setInput() {
 
 // Concert Function (Bands in Town Artist Events API)
 function concertThis(){
-
+console.log(`Searching for...${userInput}'s next show... `)
    // Then create a request to the movieUrl
    request(concertUrl, function(error, response, body) {
     
-       // If the request is successful
+    // If the request is successful
     if (!error && response.statusCode === 200) {
 
+      //capture data and use JSOn to format
       var concertData =  JSON.parse(body);
 
       if (concertData.length >0){
@@ -132,15 +133,17 @@ function concertThis(){
         console.log(`
          ------------------------------------------  
           Venue Name: ${concertData[i].venue.name}
-          Venue City: ${concertData[i].venue.city}
+          Venue City: ${concertData[i].venue.city}, ${concertData[i].venue.country}
           Event Date: ${venueDate}
          ------------------------------------------
         `);
         }
       }
+      else {
+          console.log("Bands or concert not found.")
+      }
 
-  
-      // Write movie info to log.txt
+      // Write concert info to log.txt
       // fs.appendFile('log.txt', "test", 'utf8', function (err) {
       //   if (err) {
       //     return console.log("Error occurred: " + err);
@@ -163,8 +166,8 @@ function spotifyThis(userInput) {
         var songData = data.tracks.items[i];
         
         // Log song info to console
-        console.log(`
-       ----------------------------------------
+        console.log(
+      `----------------------------------------
         Song: ${songData.name}
         Artist: ${songData.artists[0].name}  
         Preview URL: ${songData.preview_url}
