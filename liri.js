@@ -28,7 +28,7 @@ var Spotify = require('node-spotify-api');
 // Store all of the arguments in a variable
 var nodeArgs = process.argv;
 
-// Actions (i.e. "spotify-this-song", "movie-this", "do-what-it-says")
+// Actions (i.e. "concert-this", "spotify-this-song", "movie-this", "do-what-it-says")
 var action = process.argv[2];
 
 // Create an empty variable for holding the movie or song name
@@ -112,6 +112,7 @@ function setInput() {
 // Concert Function (Bands in Town Artist Events API)
 function concertThis(){
 console.log(`Searching for...${userInput}'s next show... `)
+  
    // Then create a request to the movieUrl
    request(concertUrl, function(error, response, body) {
     
@@ -194,8 +195,7 @@ function movieThis(){
     // If the request is successful
     if (!error && response.statusCode === 200) {
 
-      // Log movie info to console
-     
+    // Log movie info to console
   console.log(
  `-------------------------------------------------------------------------  
   * Title: ${movieData.Title}
