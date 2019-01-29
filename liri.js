@@ -5,7 +5,8 @@
 <!--    b. spotify-this-song '<song name here>'                       -->
 <!--    c. movie-this '<movie name here>'                             -->
 <!--    d. do-what-it-says                                            -->
-<!-- 2 .output the data to a .txt file called log.txt.                -->
+<!-- 2 .Output the data to a .txt file called log.txt.                -->
+<!--    Make sure you append each command you run to the `log.txt`    -->
 <!-- ================================================================ -->*/
 
 //require .env file
@@ -154,6 +155,7 @@ console.log(`Searching for...${userInput}'s next show... `)
       }
 
       // Write concert info to log.txt
+      
       fs.appendFile('log.txt', "--------------Concert: " + concertData[i].venue.name + "--------------" + "\n" + "Location: " + concertData[i].venue.city + "\n" + "Date: " + moment(concertData[i].datetime).format("MM/DD/YYYY") + "\n" + "\n", 'utf8', function (err) {
         if (err) {
           return console.log("Error occurred: " + err);
@@ -211,8 +213,9 @@ function movieThis(){
 
       // Log movie info to console
      
-  console.log(
- `-------------------------------------------------------------------------  
+  console.log(`
+  Here is the movie you requested:
+  -------------------------------------------------------------------------  
   * Title: ${movieData.Title}
   * Release Year: ${movieData.Year} 
   * IMDB Rating: ${movieData.Ratings[0].Value}  
