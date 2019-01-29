@@ -167,7 +167,9 @@ require("dotenv").config();
 * `spotify-this-song` with song = "Bad Romance"
 ![spotify-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/spotify-this.JPG)
 * `movie-this` with no movie provided
-![spotify-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/movie-this2.JPG)
+![movie-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/movie-this2.JPG)
 * `movie-this` with movie = "Finding Nemo"
-![spotify-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/movie-this.JPG)
+![movie-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/movie-this.JPG)
+* `do-what-it-says` with random text file containing "I Want it That Way"
+![do-what-it-says](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/do-what-it-says.JPG)
 - - -
