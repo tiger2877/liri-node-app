@@ -88,12 +88,13 @@ function setInput() {
  
 /*
 <!-- ================================================================================================= -->
-<!-- we check if the number of elements in the process.argv array is less then or equal to 3           -->
+<!-- we check if the number of elements in the param array is less then or equal to 3                  -->
 <!-- if it is only 3 or less, then we know the user has not supplied any parameter on the command line -->                                                -->
 <!-- ================================================================================================= --> */
 
   // Pass default for Bands in Town Artist Events API
   if (action === "concert-this" && param.length <= 3) {
+    //concertUrl = "https://rest.bandsintown.com/artists/ladygaga/events?app_id=codingbootcamp";
     concertUrl = "https://rest.bandsintown.com/artists/ladygaga/events?app_id=codingbootcamp";
   }
   else {
@@ -101,6 +102,7 @@ function setInput() {
   }
 
   // Pass default for Spotify API
+  // If no song is provided then your program will default to "The Sign" by Ace of Base
   if (action === "spotify-this-song" && param.length <= 3) {
     userInput = "The+Sign+Ace+of+Base"
   }
@@ -120,8 +122,6 @@ function concertThis(){
   
 console.log(`Searching for...${userInput}'s next show... `)
 
-   //If no song is provided then your program will default to "The Sign" by Ace of Base
-
    // Then create a request to the movieUrl
    request(concertUrl, function(error, response, body) {
     
@@ -135,15 +135,16 @@ console.log(`Searching for...${userInput}'s next show... `)
         for (i=0; i <1; i++) {
 
         //moment.js to format date to mm/dd/yyyy
-        let venueDate = moment(concertData[i].datetime).format("MM/DD/YYYY");
+        var venueDate = moment(concertData[i].datetime).format("MM/DD/YYYY");
 
         // Log concert info to console
         console.log(`
-         ------------------------------------------  
+        Here is the concert information you requested:
+        ---------------------------------------------------------------------------  
           Venue Name: ${concertData[i].venue.name}
           Venue City: ${concertData[i].venue.city}, ${concertData[i].venue.country}
           Event Date: ${venueDate}
-         ------------------------------------------
+         
         `);
         }
       }
@@ -152,11 +153,11 @@ console.log(`Searching for...${userInput}'s next show... `)
       }
 
       // Write concert info to log.txt
-      // fs.appendFile('log.txt', "test", 'utf8', function (err) {
-      //   if (err) {
-      //     return console.log("Error occurred: " + err);
-      //   }
-      // });
+      fs.appendFile('log.txt', "--------------Concert: " + concertData[i].venue.name + "--------------" + "\n" + "Location: " + concertData[i].venue.city + "\n" + "Date: " + moment(concertData[i].datetime).format("MM/DD/YYYY") + "\n" + "\n", 'utf8', function (err) {
+        if (err) {
+          return console.log("Error occurred: " + err);
+        }
+      });
     }
   });
 }
@@ -164,6 +165,8 @@ console.log(`Searching for...${userInput}'s next show... `)
 // Spotify Function (Spotify API)
 function spotifyThis(userInput) {
 
+  console.log(`Searching Spotify for your song... `)
+  
   var spotify = new Spotify(keys.spotify);
 
   spotify.search({ type: 'track', query: userInput }, function(error, data) {
@@ -175,12 +178,13 @@ function spotifyThis(userInput) {
         
         // Log song info to console
         console.log(`
+       Here is the song you requested:
        ----------------------------------------
         Song: ${songData.name}
         Artist: ${songData.artists[0].name}  
         Preview URL: ${songData.preview_url}
         Album: ${songData.album.name}
-       ----------------------------------------
+      
         `);
         
         // Write song info to log.txt
