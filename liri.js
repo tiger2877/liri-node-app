@@ -106,7 +106,7 @@ function setInput() {
   // Pass default for Spotify API
   // If no song is provided then your program will default to "The Sign" by Ace of Base
   if (action === "spotify-this-song" && param.length <= 3) {
-    userInput = "The+Sign+Ace+of+Base"
+    userInput = "The Sign Ace of Base"
   }
 
   // Pass default for OMDB API
