@@ -8,7 +8,7 @@
 <!-- 2 .Output the data to a .txt file called log.txt.                -->
 <!--    Make sure you append each command you run to the `log.txt`    -->
 <!-- ================================================================ -->*/
-
+            
 //require .env file
 require("dotenv").config();
 
@@ -122,7 +122,7 @@ function setInput() {
 // Concert Function (Bands in Town Artist Events API)
 function concertThis(){
   
-console.log(`Searching for...${userInput}'s next show... `)
+console.log(`Searching for the next show for: ${userInput}........ `)
 
    // Then create a request to the movieUrl
    request(concertUrl, function(error, response, body) {
@@ -168,7 +168,7 @@ console.log(`Searching for...${userInput}'s next show... `)
 // Spotify Function (Spotify API)
 function spotifyThis(userInput) {
 
-  console.log(`Searching Spotify for your song... `)
+  console.log(`Searching Spotify for your song: ${userInput}........... `)
   
   var spotify = new Spotify(keys.spotify);
 
@@ -204,6 +204,8 @@ function spotifyThis(userInput) {
 // Movie Function (OMDB API)
 function movieThis(){
  
+  console.log(`Searching Open Movie Database for your movie: ${userInput}......... `)
+
   // Then create a request to the movieUrl
   request(movieUrl, function(error, response, body) {
     var movieData =  JSON.parse(body);
@@ -224,7 +226,7 @@ function movieThis(){
   * Language: ${movieData.Language}
   * Plot: ${movieData.Plot} 
   * Actors: ${movieData.Actors} 
-  -------------------------------------------------------------------------  
+  
   `)
 
       // Write movie info to log.txt
