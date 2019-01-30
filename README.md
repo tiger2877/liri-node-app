@@ -171,5 +171,5 @@ require("dotenv").config();
 * `movie-this` with movie = "Finding Nemo"
 ![movie-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/movie-this4.jpg)
 * `do-what-it-says` with random text file containing "I Want it That Way"
-![do-what-it-says](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/do-what-it-says.JPG)
+![do-what-it-says](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/do-what-it-says-new.jpg)
 - - -
