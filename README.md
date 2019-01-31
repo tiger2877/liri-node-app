@@ -9,19 +9,16 @@ In this assignment, you will make LIRI. LIRI is like iPhone's SIRI. However, whi
 ### Requirements
 
 To retrieve the data that will power this app, you'll need to send requests to the Bands in Town, Spotify and OMDB APIs. 
-You'll find these Node packages crucial for your assignment.
+You'll find these Node packages crucial for this assignment:
 
-   * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
-
-   * [Request](https://www.npmjs.com/package/request)
-
-     * You'll use Request to grab data from the [OMDB API](http://www.omdbapi.com) and the [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
-
-   * [Moment](https://www.npmjs.com/package/moment)
-
-   * [DotEnv](https://www.npmjs.com/package/dotenv)
+| Node APM | Description |
+| --- | --- |
+| `Request` | https://www.npmjs.com/package/request|
+| `Moment` | https://www.npmjs.com/package/moment|
+| `DotEnv` | https://www.npmjs.com/package/dotenv|
+| `node-spotify-api` | https://www.npmjs.com/package/node-spotify-api |
+| `axios` | https://www.npmjs.com/package/axios |
    
-
 ### Instructions
 
 1. Navigate to the root of your project and run `npm init -y` &mdash; this will initialize a `package.json` file for your project. The `package.json` file is required for installing third party npm packages and saving their version numbers. If you fail to initialize a `package.json` file, it will be troublesome, and at times almost impossible for anyone else to run your code after cloning your project.
