@@ -163,7 +163,7 @@ require("dotenv").config();
 * `concert-this`
 ![concert-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/concert-this-new.jpg)
 * `spotify-this-song` with no song provided
-![spotify-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/spotify-this2.JPG)
+![spotify-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/spotify-this4.jpg)
 * `spotify-this-song` with song = "Bad Romance"
 ![spotify-this](https://github.com/tiger2877/liri-node-app/blob/master/screenshots/spotify-this-new.jpg)
 * `movie-this` with no movie provided
