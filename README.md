@@ -11,6 +11,11 @@ In this assignment, you will make LIRI. LIRI is like iPhone's SIRI. However, whi
 To retrieve the data that will power this app, you'll need to send requests to the Bands in Town, Spotify and OMDB APIs. 
 You'll find these Node packages crucial for your assignment.
 
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
+
    * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
 
    * [Request](https://www.npmjs.com/package/request)
