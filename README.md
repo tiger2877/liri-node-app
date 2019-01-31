@@ -9,7 +9,7 @@ In this assignment, you will make LIRI. LIRI is like iPhone's SIRI. However, whi
 ### Requirements
 
 To retrieve the data that will power this app, you'll need to send requests to the Bands in Town, Spotify and OMDB APIs. 
-You'll find these Node packages crucial for this assignment.
+You'll find these Node packages crucial for this assignment:
 
 | Node APM | Description |
 | --- | --- |
