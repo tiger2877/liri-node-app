@@ -1,4 +1,4 @@
-# Lesson 10.3 -- Coding Cheatsheet
+Coding Cheatsheet
 
 ## Core JavaScript
 
